@@ -7,9 +7,9 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt
 import  numpy as np
 import time
-from torch_geometric.nn import GCNConv
-from torch_geometric.utils import to_networkx
-from collections import defaultdict
+# from torch_geometric.nn import GCNConv
+# from torch_geometric.utils import to_networkx
+# from collections import defaultdict
 
 
 PRETRAINED = {
@@ -359,7 +359,7 @@ class WireframeDetector(nn.Module):
             edge_index = torch.IntTensor([lines_graph_v1, lines_graph_v2])
 
             #GCN
-            logits = self.graph_forward(features_per_line,edge_index).view(-1)
+            # logits = self.graph_forward(features_per_line,edge_index).view(-1)
 
 
 
