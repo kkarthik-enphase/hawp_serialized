@@ -1,4 +1,4 @@
-# Holistically-Attracted Wireframe Parsing (CVPR 2020)
+# HAWP SERIALIZED - NO CUDA
 
 This is the official implementation of our [CVPR paper](https://arxiv.org/pdf/2003.01663).
 
