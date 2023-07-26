@@ -1,0 +1,36 @@
+2023-07-04 00:16:37,647 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:16:37,647 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:16:37,765 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:16:37,766 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 00:17:09,409 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:17:09,409 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:17:09,503 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:17:09,504 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 00:17:21,245 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:17:21,245 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:17:21,339 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:17:21,340 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 00:29:29,461 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:29:29,462 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:29:29,621 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:29:29,621 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 00:33:50,521 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:33:50,521 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:33:50,806 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:33:50,807 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 00:35:58,455 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:35:58,455 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:35:58,651 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:35:58,652 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 00:38:27,679 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 00:38:27,680 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 00:38:27,968 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 00:38:27,969 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 10:36:31,663 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 10:36:31,663 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 10:36:31,958 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 10:36:31,959 hawp.testing INFO: Testing on wireframe_test dataset
+2023-07-04 10:36:55,844 hawp INFO: Namespace(config_file='config-files/hawp.yaml', display=True, opts=[], threshold=10.0)
+2023-07-04 10:36:55,845 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-04 10:36:56,129 hawp.testing INFO: No checkpoint found. Initializing model from scratch
+2023-07-04 10:36:56,130 hawp.testing INFO: Testing on wireframe_test dataset

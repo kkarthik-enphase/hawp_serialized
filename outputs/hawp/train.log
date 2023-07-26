@@ -1,0 +1,4888 @@
+2023-06-26 22:38:26,999 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-26 22:38:26,999 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-26 22:38:26,999 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-26 22:38:26,999 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-26 22:38:26,999 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 15:28:01,577 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 15:28:01,577 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 15:28:01,577 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 15:28:01,578 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 15:28:01,578 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:08:11,363 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:08:11,363 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:08:11,363 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:08:11,363 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:08:11,363 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:09:48,805 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:09:48,806 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:09:48,806 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:09:48,806 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:09:48,806 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:10:25,271 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:10:25,272 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:10:25,272 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:10:25,272 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:10:25,272 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:10:25,424 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:11:08,558 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:11:08,558 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:11:08,558 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:11:08,558 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:11:08,558 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:11:08,708 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:12:16,294 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:12:16,294 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:12:16,294 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:12:16,295 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:12:16,295 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:12:16,548 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:13:54,921 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:13:54,922 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:13:54,922 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:13:54,922 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:13:54,922 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:13:55,179 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:14:22,168 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:14:22,168 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:14:22,168 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:14:22,169 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:14:22,169 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:14:22,393 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:20:23,212 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:20:23,212 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:20:23,212 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:20:23,212 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:20:23,212 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:20:23,480 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:26:01,041 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:26:01,041 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:26:01,041 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:26:01,042 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:26:01,042 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:26:01,293 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:26:37,804 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:26:37,804 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:26:37,804 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:26:37,804 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:26:37,804 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:26:38,056 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:28:22,892 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:28:22,892 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:28:22,892 hawp INFO: 
+SOLVER:
+  IMS_PER_BATCH: 6
+  BASE_LR: 0.0004
+  MAX_EPOCH: 30
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  CHECKPOINT_PERIOD: 1
+  OPTIMIZER: "ADAM"
+  AMSGRAD: True
+
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  IMAGE:
+    PIXEL_MEAN: [109.730, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+
+  TEST: ("wireframe_test",) #,"york_test")
+
+MODEL:
+  NAME: "Hourglass"
+  HEAD_SIZE: [[3], [1], [1], [2], [2]] #Order: ang, dis, dis_residual, jloc, joff
+  OUT_FEATURE_CHANNELS: 256
+  HGNETS:
+    DEPTH: 4
+    NUM_STACKS: 2
+    NUM_BLOCKS: 1
+    INPLANES: 64
+    NUM_FEATS: 128
+
+  PARSING_HEAD:
+    USE_RESIDUAL: True
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC:   300
+    N_DYN_POSL:   300
+    N_DYN_NEGL:   0
+    N_DYN_OTHR:   0
+    N_DYN_OTHR2:  300
+    N_PTS0: 32
+    N_PTS1: 8
+    DIM_LOI: 128
+    DIM_FC: 1024
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+  
+  LOSS_WEIGHTS:
+    loss_md: 1.0 # angle regression
+    loss_dis: 1.0 # dis   regression
+    loss_res: 1.0      # residual regression
+    loss_joff: 0.25    # joff  regression
+    loss_jloc: 8.0     # jloc  classification
+    loss_pos: 1.0      # pos   classification
+    loss_neg: 1.0      # neg   classification
+
+OUTPUT_DIR: "outputs/hawp"
+2023-06-29 16:28:22,892 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:28:22,892 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:28:23,141 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:34:06,167 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:34:06,167 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:34:06,167 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:34:06,167 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:34:06,418 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:34:27,961 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:34:27,962 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:34:27,962 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:34:27,962 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:34:28,185 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 16:40:48,385 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 16:40:48,386 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 16:40:48,386 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 16:40:48,386 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 16:40:48,651 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-06-29 18:18:55,597 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-06-29 18:18:55,597 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-06-29 18:18:55,597 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-06-29 18:18:55,598 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-06-29 18:18:55,875 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-03 13:45:53,333 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-03 13:45:53,333 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-03 13:45:53,334 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-03 13:45:53,334 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-03 13:45:53,609 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-03 13:48:37,830 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-03 13:48:37,830 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-03 13:48:37,830 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-03 13:48:37,830 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-03 13:48:38,141 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-03 13:48:59,315 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-03 13:48:59,315 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-03 13:48:59,316 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-03 13:48:59,316 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-03 13:48:59,549 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-03 13:49:43,852 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-03 13:49:43,852 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-03 13:49:43,853 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-03 13:49:43,853 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-03 13:49:44,087 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-03 13:50:05,852 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-03 13:50:05,852 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-03 13:50:05,853 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-03 13:50:05,853 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-03 13:50:06,102 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-19 21:00:52,479 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-19 21:00:52,480 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-19 21:00:52,480 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-19 21:00:52,480 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-19 21:00:59,692 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-19 21:02:21,927 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-19 21:02:21,928 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-19 21:02:21,928 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-19 21:02:21,928 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-19 21:02:29,159 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-19 21:03:42,355 hawp.trainer INFO: eta: 84 days, 17:34:14 epoch: 1 iter: 0 data: 0.2021 (0.2021) loss: nan (nan) loss_dis: nan (nan) loss_jloc: 0.0278 (0.0278) loss_joff: 0.3729 (0.3729) loss_md: nan (nan) loss_neg: 0.0946 (0.0946) loss_pos: 0.0523 (0.0523) loss_res: nan (nan) time: 73.1932 (73.1932) lr: 0.000400 max mem: 0
+
+2023-07-19 21:11:00,051 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-19 21:11:00,051 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-19 21:11:00,051 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-19 21:11:00,051 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-19 21:11:07,138 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-19 21:37:24,828 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-19 21:37:24,829 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-19 21:37:24,829 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-19 21:37:24,829 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-19 21:37:32,306 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-19 23:04:27,609 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-19 23:04:27,609 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-19 23:04:27,610 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-19 23:04:27,610 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-19 23:04:34,786 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-19 23:05:47,418 hawp.trainer INFO: eta: 84 days, 1:56:15 epoch: 1 iter: 0 data: 0.2384 (0.2384) loss: 2.5439 (2.5439) loss_dis: 0.6323 (0.6323) loss_jloc: 0.0278 (0.0278) loss_joff: 0.3729 (0.3729) loss_md: 0.9688 (0.9688) loss_neg: 0.0983 (0.0983) loss_pos: 0.0527 (0.0527) loss_res: 0.4766 (0.4766) time: 72.6305 (72.6305) lr: 0.000400 max mem: 0
+
+2023-07-20 14:36:12,828 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:36:12,828 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:36:12,829 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:36:12,829 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:36:19,638 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-20 14:37:26,300 hawp.trainer INFO: eta: 77 days, 4:05:44 epoch: 1 iter: 0 data: 0.5133 (0.5133) loss: 2.4901 (2.4901) loss_dis: 0.6320 (0.6320) loss_jloc: 0.0232 (0.0232) loss_joff: 0.3628 (0.3628) loss_md: 0.9709 (0.9709) loss_neg: 0.1003 (0.1003) loss_pos: 0.0429 (0.0429) loss_res: 0.4677 (0.4677) time: 66.6614 (66.6614) lr: 0.000400 max mem: 0
+
+2023-07-20 14:39:47,956 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:39:47,957 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:39:47,957 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:39:47,957 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:39:54,618 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-20 14:40:17,898 hawp.trainer INFO: eta: 26 days, 22:45:46 epoch: 1 iter: 0 data: 0.4069 (0.4069) loss: 2.5439 (2.5439) loss_dis: 0.6323 (0.6323) loss_jloc: 0.0278 (0.0278) loss_joff: 0.3729 (0.3729) loss_md: 0.9688 (0.9688) loss_neg: 0.0983 (0.0983) loss_pos: 0.0527 (0.0527) loss_res: 0.4766 (0.4766) time: 23.2786 (23.2786) lr: 0.000400 max mem: 0
+
+2023-07-20 14:41:48,894 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:41:48,894 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:41:48,894 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:41:48,894 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:41:55,616 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-20 14:42:18,975 hawp.trainer INFO: eta: 27 days, 0:57:25 epoch: 1 iter: 0 data: 0.5402 (0.5402) loss: 2.5439 (2.5439) loss_dis: 0.6323 (0.6323) loss_jloc: 0.0278 (0.0278) loss_joff: 0.3729 (0.3729) loss_md: 0.9688 (0.9688) loss_neg: 0.0983 (0.0983) loss_pos: 0.0527 (0.0527) loss_res: 0.4766 (0.4766) time: 23.3575 (23.3575) lr: 0.000400 max mem: 0
+
+2023-07-20 14:50:14,235 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:50:14,235 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:50:14,236 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:50:14,236 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:51:30,914 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:51:30,914 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:51:30,915 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:51:30,915 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:53:23,842 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:53:23,843 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:53:23,843 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:53:23,843 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:53:30,839 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-20 14:54:39,880 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:54:39,880 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:54:39,880 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:54:39,880 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:54:46,485 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-20 14:56:21,950 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-20 14:56:21,950 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-20 14:56:21,950 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-20 14:56:21,950 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-20 14:56:28,494 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-20 14:56:50,167 hawp.trainer INFO: eta: 25 days, 2:07:28 epoch: 1 iter: 0 data: 0.6445 (0.6445) loss: 15.3718 (15.3718) loss_dis: 0.7367 (0.7367) loss_jloc: 1.5471 (1.5471) loss_joff: 0.4886 (0.4886) loss_md: 0.4420 (0.4420) loss_neg: 0.9178 (0.9178) loss_pos: 0.5035 (0.5035) loss_res: 0.2725 (0.2725) time: 21.6719 (21.6719) lr: 0.000400 max mem: 0
+
+2023-07-21 18:43:26,575 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 18:43:26,575 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 18:43:26,575 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 18:43:26,575 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 18:43:33,481 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 18:43:56,680 hawp.trainer INFO: eta: 26 days, 20:29:19 epoch: 1 iter: 0 data: 0.5120 (0.5120) loss: 15.3718 (15.3718) loss_dis: 0.7367 (0.7367) loss_jloc: 1.5471 (1.5471) loss_joff: 0.4886 (0.4886) loss_md: 0.4420 (0.4420) loss_neg: 0.9178 (0.9178) loss_pos: 0.5035 (0.5035) loss_res: 0.2725 (0.2725) time: 23.1967 (23.1967) lr: 0.000400 max mem: 0
+
+2023-07-21 18:45:28,154 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 18:45:28,154 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 18:45:28,154 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 18:45:28,154 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 18:45:34,895 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 18:55:50,524 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 18:55:50,525 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 18:55:50,525 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 18:55:50,525 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 18:55:57,489 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 18:58:12,853 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 18:58:12,853 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 18:58:12,853 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 18:58:12,854 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 18:58:19,791 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 19:00:21,549 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 19:00:21,549 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 19:00:21,549 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 19:00:21,549 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 19:00:28,072 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 19:02:39,050 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 19:02:39,050 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 19:02:39,051 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 19:02:39,051 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 19:02:45,945 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 19:19:19,613 hawp.trainer INFO: eta: 1150 days, 7:35:46 epoch: 1 iter: 0 data: 0.4227 (0.4227) loss: 15.6093 (15.6093) loss_dis: 0.5757 (0.5757) loss_jloc: 1.5471 (1.5471) loss_joff: 0.4886 (0.4886) loss_md: 0.6822 (0.6822) loss_neg: 0.9178 (0.9178) loss_pos: 0.4993 (0.4993) loss_res: 0.4351 (0.4351) time: 993.6648 (993.6648) lr: 0.000400 max mem: 0
+
+2023-07-21 19:23:09,748 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 19:23:09,749 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 19:23:09,749 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 19:23:09,749 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 19:23:16,369 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 19:23:31,198 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-21 19:23:31,199 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-21 19:23:31,199 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-21 19:23:31,199 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-21 19:23:37,792 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-21 19:43:05,503 hawp.trainer INFO: eta: 1351 days, 19:11:51 epoch: 1 iter: 0 data: 0.5906 (0.5906) loss: 15.6093 (15.6093) loss_dis: 0.5757 (0.5757) loss_jloc: 1.5471 (1.5471) loss_joff: 0.4886 (0.4886) loss_md: 0.6822 (0.6822) loss_neg: 0.9178 (0.9178) loss_pos: 0.4993 (0.4993) loss_res: 0.4351 (0.4351) time: 1167.7098 (1167.7099) lr: 0.000400 max mem: 0
+
+2023-07-22 10:44:35,040 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-22 10:44:35,040 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-22 10:44:35,040 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-22 10:44:35,040 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-22 10:44:41,883 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-22 11:01:22,141 hawp.trainer INFO: eta: 1157 days, 22:43:12 epoch: 1 iter: 0 data: 0.5518 (0.5518) loss: 15.6093 (15.6093) loss_dis: 0.5757 (0.5757) loss_jloc: 1.5471 (1.5471) loss_joff: 0.4886 (0.4886) loss_md: 0.6822 (0.6822) loss_neg: 0.9178 (0.9178) loss_pos: 0.4993 (0.4993) loss_res: 0.4351 (0.4351) time: 1000.2559 (1000.2559) lr: 0.000400 max mem: 0
+
+2023-07-24 12:30:29,981 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:30:29,981 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:30:29,981 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:30:29,982 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:30:36,879 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-24 12:37:39,504 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:37:39,504 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:37:39,504 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:37:39,504 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:38:00,866 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:38:00,866 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:38:00,866 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:38:00,866 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:38:24,252 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:38:24,253 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:38:24,253 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:38:24,253 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:38:31,404 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-24 12:42:34,016 hawp.trainer INFO: eta: 1684 days, 19:03:40 epoch: 1 iter: 0 data: 0.0818 (0.0818) loss: 15.6604 (15.6604) loss_dis: 0.6218 (0.6218) loss_jloc: 1.5499 (1.5499) loss_joff: 0.5051 (0.5051) loss_md: 0.6855 (0.6855) loss_neg: 0.9342 (0.9342) loss_pos: 0.4935 (0.4935) loss_res: 0.4002 (0.4002) time: 242.6100 (242.6100) lr: 0.000400 max mem: 0
+
+2023-07-24 12:43:40,966 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:43:40,966 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:43:40,966 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:43:40,966 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:43:48,117 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-24 12:44:01,193 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:44:01,193 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:44:01,193 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:44:01,193 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:44:08,281 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-24 12:44:26,814 hawp INFO: Namespace(clean=False, config_file='config-files/hawp.yaml', opts=[], seed=2)
+2023-07-24 12:44:26,815 hawp INFO: Loaded configuration file config-files/hawp.yaml
+2023-07-24 12:44:26,815 hawp INFO: Running with config:
+DATALOADER:
+  NUM_WORKERS: 8
+DATASETS:
+  DISTANCE_TH: 0.02
+  IMAGE:
+    HEIGHT: 512
+    PIXEL_MEAN: [109.73, 103.832, 98.681]
+    PIXEL_STD: [22.275, 22.124, 23.229]
+    TO_255: True
+    WIDTH: 512
+  NUM_STATIC_NEGATIVE_LINES: 40
+  NUM_STATIC_POSITIVE_LINES: 300
+  TARGET:
+    HEIGHT: 128
+    WIDTH: 128
+  TEST: ('wireframe_test',)
+  TRAIN: ('wireframe_train',)
+  VAL: ('wireframe_test',)
+ENCODER:
+  ANG_TH: 0.1
+  DIS_TH: 5
+  NUM_STATIC_NEG_LINES: 40
+  NUM_STATIC_POS_LINES: 300
+MODEL:
+  DEVICE: cpu
+  HEAD_SIZE: [[3], [1], [1], [2], [2]]
+  HGNETS:
+    DEPTH: 4
+    INPLANES: 64
+    NUM_BLOCKS: 1
+    NUM_FEATS: 128
+    NUM_STACKS: 2
+  LOSS_WEIGHTS:
+    loss_dis: 1.0
+    loss_jloc: 8.0
+    loss_joff: 0.25
+    loss_md: 1.0
+    loss_neg: 1.0
+    loss_pos: 1.0
+    loss_res: 1.0
+  NAME: Hourglass
+  OUT_FEATURE_CHANNELS: 256
+  PARSING_HEAD:
+    DIM_FC: 1024
+    DIM_LOI: 128
+    MATCHING_STRATEGY: junction
+    MAX_DISTANCE: 5.0
+    N_DYN_JUNC: 300
+    N_DYN_NEGL: 0
+    N_DYN_OTHR: 0
+    N_DYN_OTHR2: 300
+    N_DYN_POSL: 300
+    N_OUT_JUNC: 250
+    N_OUT_LINE: 2500
+    N_PTS0: 32
+    N_PTS1: 8
+    N_STC_NEGL: 40
+    N_STC_POSL: 300
+    USE_RESIDUAL: True
+  SCALE: 1.0
+  WEIGHTS: 
+OUTPUT_DIR: outputs/hawp
+SOLVER:
+  AMSGRAD: True
+  BACKBONE_LR_FACTOR: 1.0
+  BASE_LR: 0.0004
+  BIAS_LR_FACTOR: 1
+  CHECKPOINT_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 6
+  MAX_EPOCH: 30
+  MOMENTUM: 0.9
+  OPTIMIZER: ADAM
+  STEPS: (25,)
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0
+2023-07-24 12:44:26,815 hawp INFO: Saving config into: outputs/hawp/config.yml
+2023-07-24 12:44:34,056 hawp.trainer INFO: No checkpoint found. Initializing model from scratch
+2023-07-24 12:45:08,339 hawp.trainer INFO: eta: 238 days, 1:42:19 epoch: 1 iter: 0 data: 0.0799 (0.0799) loss: 15.5497 (15.5497) loss_dis: 0.5107 (0.5107) loss_jloc: 1.5499 (1.5499) loss_joff: 0.5051 (0.5051) loss_md: 0.5881 (0.5881) loss_neg: 0.9342 (0.9342) loss_pos: 0.4935 (0.4935) loss_res: 0.4980 (0.4980) time: 34.2822 (34.2822) lr: 0.000400 max mem: 0
+
